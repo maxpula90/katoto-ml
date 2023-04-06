@@ -16,7 +16,7 @@ services:
     volumes:
     - ./actions:/actions
     - ./data:/data
-    command: bash -c "rm -rf models/* && rasa init && rasa train && rasa run --enable-api --cors \"*\" --debug"
+    command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
     ports:
     - '5006:5005'
     public: true
