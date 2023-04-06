@@ -19,7 +19,6 @@ services:
     command: bash -c "rm -rf models/* && rasa train --config config.yml && rasa run --enable-api --cors \"*\" --debug"
     ports:
     - '5006:5005'
-    public: true
     networks:
     - all
 
@@ -34,7 +33,6 @@ services:
     command: ["rasa", "run", "actions"]
     ports:
     - '5055:5055'
-    public: true
     networks:
     - all
 
