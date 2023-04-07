@@ -5,6 +5,6 @@ volumes:
 sync:
 - .:/
 forward:
-- 5006:5006
+- 8082:8080
 reverse:
 - 8080:8080
