@@ -9,7 +9,7 @@ services:
     volumes:
     - ./actions:/actions
     - ./data:/data
-    command: bash -c "rm -rf models/* && rasa train --config config.yml && rasa run --enable-api --cors \"*\""
+    command: bash -c "rm -rf models/* && rasa train --config config.yml && rasa run --enable-api --cors \"*\" -p 8080"
     ports:
     - '5006:8080'
     public: true
