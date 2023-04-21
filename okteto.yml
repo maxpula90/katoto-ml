@@ -1,10 +1,34 @@
-name: rasa-server
-command: bash
-volumes:
-- /root/.cache/pip
-sync:
-- .:/
-forward:
-- 8082:8080
-reverse:
-- 9000:9000
+# name: rasa-server
+# command: bash
+# volumes:
+# - /root/.cache/pip
+# sync:
+# - .:/
+# forward:
+# - 8082:8080
+# reverse:
+# - 9000:9000
+
+name: Katoti
+env: 
+  - key: PYTHONUNBUFFERED
+    value: "1"
+build:
+  - context: .
+    dockerfile: Dockerfile
+    registry: 'docker.io' # Change this to your preferred Docker registry
+run:
+  cmd: ["bash"]
+  port: 8082
+  env: 
+    - key: PORT
+      value: "8080"
+  volumes:
+    - type: bind
+      source: /root/.cache/pip
+      target: /root/.cache/pip
+  services:
+    - name: rasa
+      internal_port: 9000
+      port: 9000
+      protocol: tcp
